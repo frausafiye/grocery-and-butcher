@@ -1,15 +1,16 @@
 import React, { ReactElement } from "react";
 import Logo from "./logo/Logo";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
-
+import { NavLink } from "react-router-dom";
 interface Props {}
 
 export default function Header({}: Props): ReactElement {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand
-          href="home"
+        <NavLink
+          className="nav-link"
+          to="home"
           style={{ display: "flex", alignItems: "center" }}
         >
           <img
@@ -17,34 +18,52 @@ export default function Header({}: Props): ReactElement {
             alt="logo"
           />
           <Logo />
-        </Navbar.Brand>
+        </NavLink>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="about">About</Nav.Link>
-            <Nav.Link href="gallery">Gallery</Nav.Link>
-            <Nav.Link href="contact">Contact</Nav.Link>
+            <NavLink className="nav-link" to="about">
+              About
+            </NavLink>
+            <NavLink className="nav-link" to="gallery">
+              Gallery
+            </NavLink>
+            <NavLink className="nav-link" to="contact">
+              Contact
+            </NavLink>
             <NavDropdown title="Products" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="grocery">Grocery</NavDropdown.Item>
-              <NavDropdown.Item href="butcher">Butcher</NavDropdown.Item>
-              <NavDropdown.Item href="finecosts">Finecosts</NavDropdown.Item>
+              <NavLink to="grocery" className="dropdown-item">
+                Grocery
+              </NavLink>
+              <NavLink to="butcher" className="dropdown-item">
+                Butcher
+              </NavLink>
+              <NavLink to="finecosts" className="dropdown-item">
+                Finecosts
+              </NavLink>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="products">All Products</NavDropdown.Item>
+              <NavLink to="products" className="dropdown-item">
+                All Products
+              </NavLink>
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="favorites">
-              <img
-                src="https://img.icons8.com/external-prettycons-lineal-prettycons/49/ffffff/external-favorites-social-media-prettycons-lineal-prettycons.png"
-                style={{ transform: "translateY(10px)" }}
-                alt="favorites link"
-              />
+            <Nav.Link>
+              <NavLink className="nav-link" to="favorites">
+                <img
+                  src="https://img.icons8.com/external-prettycons-lineal-prettycons/49/ffffff/external-favorites-social-media-prettycons-lineal-prettycons.png"
+                  style={{ transform: "translateY(10px)" }}
+                  alt="favorites link"
+                />
+              </NavLink>
             </Nav.Link>
-            <Nav.Link eventKey={2} href="cart">
-              <img
-                src="https://img.icons8.com/external-wanicon-lineal-wanicon/64/ffffff/external-grocery-food-delivery-wanicon-lineal-wanicon.png"
-                alt="cart link"
-              />
+            <Nav.Link eventKey={2}>
+              <NavLink to="cart">
+                <img
+                  src="https://img.icons8.com/external-wanicon-lineal-wanicon/64/ffffff/external-grocery-food-delivery-wanicon-lineal-wanicon.png"
+                  alt="cart link"
+                />
+              </NavLink>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
