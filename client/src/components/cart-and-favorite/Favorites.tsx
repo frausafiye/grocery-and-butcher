@@ -4,19 +4,21 @@ import ProductContext from "../../context";
 
 interface Props {}
 
-export default function Product({}: Props): ReactElement {
+export default function Favorites({}: Props): ReactElement {
   const { state, dispatch } = useContext(ProductContext);
-  console.log(state.favorites);
   return (
     <div
       style={{
         backgroundColor: "black",
+        color: "white",
         padding: "50px",
         display: "flex",
+        flexWrap: "wrap",
+        minHeight: "80vh",
       }}
     >
       {state.favorites.map((product: Product) => (
-        <div style={{ padding: "10px" }}>
+        <div key={product.id} style={{ padding: "10px" }}>
           <Card productData={product} />
         </div>
       ))}

@@ -6,8 +6,22 @@ interface Props {}
 
 export default function Header({}: Props): ReactElement {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Container>
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      bg="dark"
+      variant="dark"
+      style={{
+        maxWidth: "100%",
+        justifyContent: "space-between",
+        marginRight: "0",
+      }}
+    >
+      <Container style={{ maxWidth: "100%" }}>
+        {/* <div
+          className="nav-container"
+          // style={{ display: "flex", justifyContent: "space-between" }}
+        > */}
         <NavLink
           className="nav-link"
           to="home"
@@ -48,25 +62,30 @@ export default function Header({}: Props): ReactElement {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link>
-              <NavLink className="nav-link" to="favorites">
-                <img
-                  src="https://img.icons8.com/external-prettycons-lineal-prettycons/49/ffffff/external-favorites-social-media-prettycons-lineal-prettycons.png"
-                  style={{ transform: "translateY(10px)" }}
-                  alt="favorites link"
-                />
-              </NavLink>
-            </Nav.Link>
-            <Nav.Link eventKey={2}>
-              <NavLink to="cart">
-                <img
-                  src="https://img.icons8.com/external-wanicon-lineal-wanicon/64/ffffff/external-grocery-food-delivery-wanicon-lineal-wanicon.png"
-                  alt="cart link"
-                />
-              </NavLink>
-            </Nav.Link>
+            {/* <Nav.Link> */}
+            <NavLink className="nav-link" to="favorites">
+              <img
+                src="https://img.icons8.com/external-prettycons-lineal-prettycons/49/ffffff/external-favorites-social-media-prettycons-lineal-prettycons.png"
+                style={{ transform: "translateY(10px)" }}
+                alt="favorites link"
+              />
+            </NavLink>
+            {/* </Nav.Link> */}
+            {/* <Nav.Link eventKey={2}> */}
+            <NavLink
+              className="nav-link"
+              to="cart"
+              style={{ marginBottom: "10px", padding: "10px" }}
+            >
+              <img
+                src="https://img.icons8.com/external-wanicon-lineal-wanicon/64/ffffff/external-grocery-food-delivery-wanicon-lineal-wanicon.png"
+                alt="cart link"
+              />
+            </NavLink>
+            {/* </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
+        {/* </div> */}
       </Container>
     </Navbar>
   );

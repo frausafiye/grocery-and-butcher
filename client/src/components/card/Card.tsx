@@ -17,6 +17,7 @@ import radish from "../../images/radish.jpg";
 import eggs from "../../images/eggs.jpg";
 import QuantityButtons from "./QuantityButtons";
 import ProductContext from "../../context";
+import { useLocation } from "react-router";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -44,7 +45,9 @@ export default function CardComponent({ productData }: Props) {
   const [showQuantityButtons, setShowQuantityButtons] =
     useState<boolean>(false);
   const [quantity, setQuantity] = useState<number>(0);
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState<boolean>(false);
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  let location = useLocation();
   const {
     title,
     shortDescription,
@@ -57,10 +60,26 @@ export default function CardComponent({ productData }: Props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  const favoritesHandler = () => {
+    setIsFavorite(!isFavorite);
+    dispatch({ type: "updateFavorite", payload: productData });
+  };
+  useEffect(() => {
+    if (state.favorites) {
+      const isInFavorites = (state.favorites as Product[]).find(
+        (item) => item.id === productData.id
+      );
+      if (isInFavorites) setIsFavorite(true);
+    }
+  }, [state.favorites]);
+  useEffect(() => {
+    if (location.pathname === "/cart") {
+      setShowQuantityButtons(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (state.cart.length) {
-      console.log("there is a change in cart");
       const itemInCart = (state.cart as CartAndFavoriteItem[]).find(
         ({ id }) => id === productData.id
       );
@@ -89,7 +108,13 @@ export default function CardComponent({ productData }: Props) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton
+          aria-label="add to favorites"
+          onClick={favoritesHandler}
+          style={
+            isFavorite ? { color: "red" } : { color: "rgba(0, 0, 0, 0.54)" }
+          }
+        >
           <FavoriteIcon />
         </IconButton>
         {status === "available" && (
@@ -101,14 +126,14 @@ export default function CardComponent({ productData }: Props) {
           </IconButton>
         )}
 
-        {/* {showQuantityButtons && ( */}
-        <QuantityButtons
-          productData={productData}
-          dispatch={dispatch}
-          quantity={quantity}
-          setQuantity={setQuantity}
-        />
-        {/* )} */}
+        {showQuantityButtons && (
+          <QuantityButtons
+            productData={productData}
+            dispatch={dispatch}
+            quantity={quantity}
+            setQuantity={setQuantity}
+          />
+        )}
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

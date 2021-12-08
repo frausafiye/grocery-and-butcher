@@ -13,6 +13,7 @@ export default function Product({}: Props): ReactElement {
         backgroundColor: "black",
         padding: "50px",
         minHeight: "80vh",
+        flexWrap: "wrap",
       }}
     >
       <ProductDashboard />
@@ -22,7 +23,7 @@ export default function Product({}: Props): ReactElement {
         }}
       >
         {(state.products as Product[]).map((product) => (
-          <div style={{ padding: "10px" }}>
+          <div key={product.id} style={{ padding: "10px" }}>
             <Card productData={product} />
           </div>
         ))}

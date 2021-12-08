@@ -33,6 +33,6 @@ type PayLoadType = CartAndFavoriteItem;
 //  }
 interface StateType {
   products: Product[];
-  favorites: CartAndFavoriteItem[];
+  favorites: Product[];
   cart: CartAndFavoriteItem[];
 }

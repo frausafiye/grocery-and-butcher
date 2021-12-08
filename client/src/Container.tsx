@@ -6,7 +6,7 @@ const Container: React.FC = ({ children }) => {
   const initialState: StateType = {
     products: productData as Product[],
     cart: [] as CartAndFavoriteItem[],
-    favorites: [] as CartAndFavoriteItem[],
+    favorites: [] as Product[],
   };
 
   const Reducer = (state: StateType, action: ActionType): StateType => {
@@ -22,14 +22,10 @@ const Container: React.FC = ({ children }) => {
       const newCart = [...state.cart].filter(
         (cartitem) => cartitem.id !== action.payload.id
       );
-      console.log("new cart from remove from cart");
-      console.log(newCart);
       return newCart;
     };
     const addToCart = (): CartAndFavoriteItem[] => {
       const newCart = [...state.cart, action.payload];
-      console.log("new cart from add to cart");
-      console.log(newCart);
       return newCart;
     };
     const updateCart = (): CartAndFavoriteItem[] => {
@@ -42,8 +38,6 @@ const Container: React.FC = ({ children }) => {
         //update item quantity
         const newCart = [...state.cart];
         newCart.splice(index, 1, action.payload);
-        console.log("new cart from update cart");
-        console.log(newCart);
         return newCart;
       }
     };
@@ -51,9 +45,15 @@ const Container: React.FC = ({ children }) => {
       case "updateCartItem":
         console.log(action.payload.quantity);
         const updatedState = { ...state, cart: updateCart() };
-        console.log("updatedState");
-        console.log(updatedState); //giving the value as expected!
         return updatedState;
+      case "updateFavorite":
+        const itemInFavorites = state.favorites.find(
+          (item) => item.id === action.payload.id
+        );
+        const updatedFavorites = itemInFavorites
+          ? state.favorites.filter((item) => item.id !== action.payload.id)
+          : [...state.favorites, { ...action.payload }];
+        return { ...state, favorites: [...updatedFavorites] };
       default:
         return state;
     }
