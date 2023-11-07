@@ -8,6 +8,8 @@ const data = [
     price: 3,
     status: "available",
     longDescription: "Fresh vegatable, quick service, trustful shopping",
+    inCarousel: true,
+    image: "../../images/brocoli.jpg",
   },
   {
     id: 2,
@@ -18,6 +20,8 @@ const data = [
     price: 3,
     status: "available",
     longDescription: "Fresh vegatable, quick service, trustful shopping",
+    inCarousel: true,
+    image: "../../images/eggs.jpg",
   },
   {
     id: 3,
@@ -28,6 +32,8 @@ const data = [
     price: 3,
     status: "available",
     longDescription: "Fresh vegatable, quick service, trustful shopping",
+    inCarousel: true,
+    image: "../../images/radish.jpg",
   },
 ] as Product[];
 export default data;

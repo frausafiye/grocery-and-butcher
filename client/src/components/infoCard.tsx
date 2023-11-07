@@ -13,12 +13,12 @@ export default function InfoCard({ title, icon, desc }: Props): ReactElement {
   return (
     <Card
       style={{
-        width: 300,
+        width: "70%",
         backgroundColor: "#EA4335",
         borderColor: "#EA4335",
         borderRadius: "10px",
-        padding: "20px",
-        margin: "10px",
+        padding: "40px",
+        margin: "40px auto",
       }}
       // actions={[
       //   <SettingOutlined key="setting" />,
@@ -33,7 +33,7 @@ export default function InfoCard({ title, icon, desc }: Props): ReactElement {
           alignItems: "center",
           justifyContent: "center",
         }}
-        avatar={<img src={icon} />}
+        avatar={<img src={icon} alt="icon" />}
         title={title}
         description={desc}
       />

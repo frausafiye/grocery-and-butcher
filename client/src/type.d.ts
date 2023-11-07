@@ -7,6 +7,8 @@ interface Product {
   price: number;
   longDescription: string;
   status: string;
+  inCarousel: boolean;
+  image: string;
 }
 interface CartAndFavoriteItem extends Product {
   quantity: number;
