@@ -1,0 +1,12 @@
+.benefits-section {
+  background-image: url("../../images/grocery-background.jpg");
+  background-size: contain;
+  padding-bottom: 50px;
+}
+
+.benefits-section h3 {
+  color: whitesmoke;
+  text-align: center;
+  padding: 50px;
+  background-color: rgb(29, 29, 29);
+}

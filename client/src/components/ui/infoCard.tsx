@@ -1,30 +1,23 @@
-import React, { ReactElement } from "react";
 import { Card } from "antd";
 
 const { Meta } = Card;
-
-interface Props {
+type InfoCardProps = {
   title: string;
   icon: string;
   desc: string;
-}
+};
 
-export default function InfoCard({ title, icon, desc }: Props): ReactElement {
+export default function InfoCard({ title, icon, desc }: InfoCardProps) {
   return (
     <Card
       style={{
         width: "70%",
-        backgroundColor: "#EA4335",
-        borderColor: "#EA4335",
-        borderRadius: "10px",
-        padding: "40px",
+        borderRadius: "15px",
+        borderWidth: "3px",
+        boxShadow: "rgba(0, 0, 0, 0.24) -7px 10px 5px 15px",
+        padding: "20px",
         margin: "40px auto",
       }}
-      // actions={[
-      //   <SettingOutlined key="setting" />,
-      //   <EditOutlined key="edit" />,
-      //   <EllipsisOutlined key="ellipsis" />,
-      // ]}
     >
       <Meta
         style={{

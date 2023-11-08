@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "./hero/Hero";
+import Hero from "./hero/BenefitsSection";
 import Carousel from "./hero/Carousel";
 import Product from "./Product";
 
