@@ -9,7 +9,7 @@ const data = [
     status: "available",
     longDescription: "Fresh vegatable, quick service, trustful shopping",
     inCarousel: true,
-    image: "../src/images/brocoli.jpg",
+    image: "../images/brocoli.jpg",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const data = [
     status: "available",
     longDescription: "Fresh vegatable, quick service, trustful shopping",
     inCarousel: true,
-    image: "../src/images/eggs.jpg",
+    image: "../images/eggs.jpg",
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const data = [
     status: "available",
     longDescription: "Fresh vegatable, quick service, trustful shopping",
     inCarousel: true,
-    image: "../src/images/radish.jpg",
+    image: "../images/radish.jpg",
   },
 ] as Product[];
 export default data;

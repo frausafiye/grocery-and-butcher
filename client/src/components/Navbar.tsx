@@ -1,10 +1,8 @@
-import React, { ReactElement } from "react";
-import Logo from "./logo/Logo";
+import { ReactElement } from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-interface Props {}
 
-export default function Header({}: Props): ReactElement {
+export default function Header(): ReactElement {
   return (
     <Navbar
       collapseOnSelect
@@ -13,28 +11,31 @@ export default function Header({}: Props): ReactElement {
       variant="dark"
       style={{
         maxWidth: "100%",
-        justifyContent: "space-between",
         marginRight: "0",
       }}
     >
       <Container style={{ maxWidth: "100%" }}>
-        {/* <div
-          className="nav-container"
-          // style={{ display: "flex", justifyContent: "space-between" }}
-        > */}
         <NavLink
           className="nav-link"
           to="home"
-          style={{ display: "flex", alignItems: "center" }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
         >
           <img
             src="https://img.icons8.com/external-photo3ideastudio-flat-photo3ideastudio/64/000000/external-shopping-bag-supermarket-photo3ideastudio-flat-photo3ideastudio.png"
             alt="logo"
           />
-          <Logo />
+          <h5 style={{ margin: "0", color: "white" }}>
+            Murathan Grocery & Butcher
+          </h5>
         </NavLink>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          style={{ maxWidth: "40vw" }}
+        >
           <Nav className="me-auto">
             <NavLink className="nav-link" to="about">
               About
@@ -61,31 +62,27 @@ export default function Header({}: Props): ReactElement {
               </NavLink>
             </NavDropdown>
           </Nav>
-          <Nav>
-            {/* <Nav.Link> */}
+          <Nav
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "baseline",
+            }}
+          >
             <NavLink className="nav-link" to="favorites">
               <img
                 src="https://img.icons8.com/external-prettycons-lineal-prettycons/49/ffffff/external-favorites-social-media-prettycons-lineal-prettycons.png"
-                style={{ transform: "translateY(10px)" }}
                 alt="favorites link"
               />
             </NavLink>
-            {/* </Nav.Link> */}
-            {/* <Nav.Link eventKey={2}> */}
-            <NavLink
-              className="nav-link"
-              to="cart"
-              style={{ marginBottom: "10px", padding: "10px" }}
-            >
+            <NavLink className="nav-link" to="cart">
               <img
                 src="https://img.icons8.com/external-wanicon-lineal-wanicon/64/ffffff/external-grocery-food-delivery-wanicon-lineal-wanicon.png"
                 alt="cart link"
               />
             </NavLink>
-            {/* </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
-        {/* </div> */}
       </Container>
     </Navbar>
   );

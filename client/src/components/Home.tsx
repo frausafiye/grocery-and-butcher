@@ -1,6 +1,5 @@
-import React from "react";
 import Hero from "./hero/BenefitsSection";
-import Carousel from "./hero/Carousel";
+import Carousel from "./Carousel";
 import Product from "./Product";
 
 interface Props {}
