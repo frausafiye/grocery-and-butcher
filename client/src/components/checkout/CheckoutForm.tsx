@@ -1,11 +1,12 @@
 import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
-import CartDetails from "./CartDetails";
-import CreditCartForm from "./CreditCartForm";
+import CartDetails from "../cartReview/CartReviewTable";
+import { InvalidFeedback } from "./InvalidFeedback";
+import { PaymentMethods } from "./PaymentMethods";
+import { CheckoutFormAddressFields } from "./CheckoutFormAddressFields";
 
 interface Props {}
 
 export default function CheckoutForm({}: Props): ReactElement {
-  const [paymentMethod, setPaymentMethod] = useState<null | string>(null);
   const [willSave, setWillSave] = useState<boolean>(false);
 
   function handleSave(e: ChangeEvent) {
@@ -35,14 +36,12 @@ export default function CheckoutForm({}: Props): ReactElement {
   return (
     <div className="form-container">
       <div className="py-5 text-center">
-        <p className="lead">
-          To continue to give your order, please fill in the form below
-        </p>
-      </div>
-      <div className="row">
         <CartDetails />
+        <p className="lead">Fill out the form below to complete your order</p>
+      </div>
+      <div className="row justify-content-center">
         <div className="col-md-8 order-md-1">
-          <h4 className="mb-3">Billing address</h4>
+          <h4 className="mb-3 text-white">Billing address</h4>
           <form className="needs-validation" onSubmit={(e) => handleSubmit(e)}>
             <div className="row">
               <div className="col-md-6 mb-3">
@@ -55,9 +54,7 @@ export default function CheckoutForm({}: Props): ReactElement {
                   defaultValue=""
                   required
                 />
-                <div className="invalid-feedback">
-                  Valid first name is required.
-                </div>
+                <InvalidFeedback problemField="first name" />
               </div>
               <div className="col-md-6 mb-3">
                 <label htmlFor="lastName">Last name</label>
@@ -69,9 +66,7 @@ export default function CheckoutForm({}: Props): ReactElement {
                   defaultValue=""
                   required
                 />
-                <div className="invalid-feedback">
-                  Valid last name is required.
-                </div>
+                <InvalidFeedback problemField="last name" />
               </div>
             </div>
 
@@ -88,9 +83,7 @@ export default function CheckoutForm({}: Props): ReactElement {
                   placeholder="Username"
                   required
                 />
-                <div className="invalid-feedback" style={{ width: "100%" }}>
-                  Your username is required.
-                </div>
+                <InvalidFeedback problemField="user name" />
               </div>
             </div>
 
@@ -104,74 +97,9 @@ export default function CheckoutForm({}: Props): ReactElement {
                 id="email"
                 placeholder="you@example.com"
               />
-              <div className="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
+              <InvalidFeedback problemField="email address from shipping updates." />
             </div>
-
-            <div className="mb-3">
-              <label htmlFor="address">Address</label>
-              <input
-                type="text"
-                className="form-control"
-                id="address"
-                placeholder="1234 Main St"
-                required
-              />
-              <div className="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="address2">
-                Address 2 <span className="text-muted">(Optional)</span>
-              </label>
-              <input type="text" className="form-control" id="address2" />
-            </div>
-
-            <div className="row">
-              <div className="col-md-5 mb-3">
-                <label htmlFor="country">Country</label>
-                <select
-                  className="custom-select d-block w-100 text-black"
-                  id="country"
-                  required
-                >
-                  <option defaultValue="">Choose...</option>
-                  <option>United States</option> <option>Germany</option>
-                  <option>Kosovo</option>
-                </select>
-                <div className="invalid-feedback">
-                  Please select a valid country.
-                </div>
-              </div>
-              <div className="col-md-4 mb-3">
-                <label htmlFor="state">State</label>
-                <select
-                  className="custom-select d-block w-100 text-black"
-                  id="state"
-                  required
-                >
-                  <option value="">Choose...</option>
-                  <option>California</option>
-                </select>
-                <div className="invalid-feedback">
-                  Please provide a valid state.
-                </div>
-              </div>
-              <div className="col-md-3 mb-3">
-                <label htmlFor="zip">Zip</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="zip"
-                  placeholder=""
-                  required
-                />
-                <div className="invalid-feedback">Zip code required.</div>
-              </div>
-            </div>
+            <CheckoutFormAddressFields />
             <hr className="mb-4" />
             <div className="custom-control custom-checkbox">
               <input
@@ -197,53 +125,17 @@ export default function CheckoutForm({}: Props): ReactElement {
             <hr className="mb-4" />
 
             <h4 className="mb-3 text-white">Payment</h4>
+            <PaymentMethods />
 
-            <div className="d-block my-3">
-              <div className="custom-control custom-radio">
-                <input
-                  id="credit"
-                  name="paymentMethod"
-                  type="radio"
-                  className="custom-control-input"
-                  required
-                  onChange={() => setPaymentMethod("creditCard")}
-                />
-                <label className="custom-control-label" htmlFor="credit">
-                  Credit card
-                </label>
-              </div>
-              <div className="custom-control custom-radio">
-                <input
-                  id="debit"
-                  name="paymentMethod"
-                  type="radio"
-                  className="custom-control-input"
-                  required
-                  onChange={() => setPaymentMethod("debit")}
-                />
-                <label className="custom-control-label" htmlFor="debit">
-                  Debit card
-                </label>
-              </div>
-              <div className="custom-control custom-radio">
-                <input
-                  id="paypal"
-                  name="paymentMethod"
-                  type="radio"
-                  className="custom-control-input"
-                  required
-                  onChange={() => setPaymentMethod("paypal")}
-                />
-                <label className="custom-control-label" htmlFor="paypal">
-                  Paypal
-                </label>
-              </div>
-            </div>
-            {paymentMethod === "creditCard" && <CreditCartForm />}
             <hr className="mb-4" />
-            <button className="btn btn-primary btn-lg btn-block" type="submit">
-              Continue to checkout
-            </button>
+            <div className="text-center">
+              <button
+                className="btn btn-primary btn-lg d-inline m-auto"
+                type="submit"
+              >
+                Continue to checkout
+              </button>
+            </div>
           </form>
         </div>
       </div>

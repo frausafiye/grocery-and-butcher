@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import IconButton from "@mui/material/IconButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinusCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
@@ -16,26 +15,6 @@ export default function RecipeReviewCard({
   dispatch,
   setQuantity,
 }: Props) {
-  // const findItemInCart = () => {
-  //   if (state.cart) {
-  //     console.log(productData.id);
-  //     const itemIsInCart = (state.cart as CartAndFavoriteItem[]).find(
-  //       ({ id }) => id === productData.id
-  //     );
-  //     if (itemIsInCart) {
-  //       setIsItemInCart(true);
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   findItemInCart();
-  // }, []);
-
-  // useEffect(() => {
-  //   findItemInCart();
-  // }, [state.cart]);
-
   const updateCart = (action: "increase" | "decrease") => {
     setQuantity(quantity + 1);
     const updatedQuantity = action === "increase" ? quantity + 1 : quantity - 1;

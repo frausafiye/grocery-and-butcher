@@ -1,14 +1,12 @@
-import React, { ReactElement, useContext } from "react";
-import Card from "../card/Card";
+import { ReactElement, useContext } from "react";
 import ProductContext from "../../context";
-import CheckoutForm from "../checkout/CheckoutForm";
 import { Link } from "react-router-dom";
+import CartReviewTable from "../cartReview/CartReviewTable";
 
 interface Props {}
 
 export default function Cart({}: Props): ReactElement {
   const { state, dispatch } = useContext(ProductContext);
-  console.log(state.cart);
   return (
     <div
       style={{
@@ -18,19 +16,13 @@ export default function Cart({}: Props): ReactElement {
         minHeight: "80vh",
       }}
     >
+      <CartReviewTable />
       <div
         style={{
           display: "flex",
           flexWrap: "wrap",
         }}
-      >
-        {state.cart &&
-          state.cart.map((cartItem: CartAndFavoriteItem) => (
-            <div key={cartItem.id} style={{ padding: "10px" }}>
-              <Card productData={cartItem} />
-            </div>
-          ))}
-      </div>
+      ></div>
       <Link to="/checkout">
         <button className="btn btn-primary btn-lg btn-block">checkout</button>
       </Link>
