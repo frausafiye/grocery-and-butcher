@@ -3,6 +3,7 @@ import CartDetails from "../cartReview/CartReviewTable";
 import { InvalidFeedback } from "./InvalidFeedback";
 import { PaymentMethods } from "./PaymentMethods";
 import { CheckoutFormAddressFields } from "./CheckoutFormAddressFields";
+import "./checkout.css";
 
 interface Props {}
 

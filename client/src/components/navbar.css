@@ -1,0 +1,21 @@
+/* .navbar .navbar-container {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between; 
+  max-width: 100%;
+} */
+
+.show .nav-link,
+.show .dropdown {
+  align-self: center;
+  transition: none;
+}
+
+/* viewwidth<410=> logo smaller font-size and never wrap!  */
+.dropdown-item.active,
+.dropdown-item:active {
+  /* color: #fff; */
+  text-decoration: none;
+  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+}

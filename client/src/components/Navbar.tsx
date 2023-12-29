@@ -1,20 +1,12 @@
 import { ReactElement } from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import "./navbar.css";
 
 export default function Header(): ReactElement {
   return (
-    <Navbar
-      collapseOnSelect
-      expand="lg"
-      bg="dark"
-      variant="dark"
-      style={{
-        maxWidth: "100%",
-        marginRight: "0",
-      }}
-    >
-      <Container style={{ maxWidth: "100%" }}>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container m-0 style={{ maxWidth: "100%" }}>
         <NavLink
           className="nav-link"
           to="home"
@@ -32,10 +24,7 @@ export default function Header(): ReactElement {
           </h5>
         </NavLink>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse
-          id="responsive-navbar-nav"
-          style={{ maxWidth: "40vw" }}
-        >
+        <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <NavLink className="nav-link" to="about">
               About
@@ -62,13 +51,7 @@ export default function Header(): ReactElement {
               </NavLink>
             </NavDropdown>
           </Nav>
-          <Nav
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "baseline",
-            }}
-          >
+          <Nav>
             <NavLink className="nav-link" to="favorites">
               <img
                 src="https://img.icons8.com/external-prettycons-lineal-prettycons/49/ffffff/external-favorites-social-media-prettycons-lineal-prettycons.png"

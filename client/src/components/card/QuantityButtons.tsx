@@ -1,6 +1,7 @@
 import IconButton from "@mui/material/IconButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinusCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import "./quantityButton.css";
 
 interface Props {
   productData: Product;
@@ -37,12 +38,7 @@ export default function RecipeReviewCard({
           type="number"
           disabled
           value={quantity}
-          style={{
-            width: "50px",
-            height: "24px",
-            fontSize: "16px",
-            textAlign: "center",
-          }}
+          className="numberInput"
         />
         <FontAwesomeIcon
           icon={faMinusCircle}

@@ -68,7 +68,7 @@ const Container: React.FC = ({ children }) => {
         dispatch,
       }}
     >
-      {children};
+      {children}
     </ProductContext.Provider>
   );
 };

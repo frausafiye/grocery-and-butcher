@@ -1,6 +1,0 @@
-.dropdown-item.active,
-.dropdown-item:active {
-  /* color: #fff; */
-  text-decoration: none;
-  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
-}

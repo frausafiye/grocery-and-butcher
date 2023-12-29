@@ -10,14 +10,13 @@ export const CartReviewRow = ({ item }: CartReviewRowProps) => {
   const { title, shortDescription, content, quantity, price } = item;
   const [itemQuantity, setItemQuantity] = useState<number>(0);
   return (
-    <li className="list-group-item d-flex justify-content-between lh-condensed">
-      <div>
-        <h6 className="my-0">{title}</h6>
+    <li className="list-group-item d-flex justify-content-between align-items-center lh-condensed text-center">
+      <span className=" col-sm d-flex flex-column text-start">
+        <span className="my-0">{title}</span>
         <small className="text-muted">{shortDescription}</small>
-      </div>
-      <span>{content}</span>
-      <span>
-        {quantity}
+      </span>
+      <span className="col-sm">{content}</span>
+      <span className="col-sm">
         {
           <QuantityButtons
             productData={item}
@@ -27,7 +26,7 @@ export const CartReviewRow = ({ item }: CartReviewRowProps) => {
           />
         }
       </span>
-      <span className="text-muted">${price * quantity}</span>
+      <span className="text-muted text-end col-sm">€{price * quantity}</span>
     </li>
   );
 };
